@@ -210,7 +210,10 @@ b64pad = "=";
     }
 
     // construct the url
-    return protocol + "://" + ((this.opts.sBucket == "" )?():(this.opts.sBucket + ".")) + this.opts.sEndpoint;
+    if (this.opts.sBucket == "")
+      return protocol + "://" + this.opts.sEndpoint;
+    else
+      return protocol + "://" + this.opts.sBucket + "." + this.opts.sEndpoint;
   };
 
   // Retrieve the REST API URL for the given resource.
